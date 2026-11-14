@@ -1,6 +1,14 @@
 pipeline {
     agent any 
     stages {
+        stage('Get latest from the repo') {
+            steps {
+                sh '''
+                    cd ~/ros2_ws/src/ros2_ci
+                    git pull
+                '''
+            }
+        }
         stage('Set up docker') {
             steps {
                 sh '''
@@ -20,7 +28,7 @@ pipeline {
         stage('Run tests in dockerfile') {
             steps {
                 sh '''
-                    docker run --rm -it   -e DISPLAY=${DISPLAY}   -v /tmp/.X11-unix:/tmp/.X11-unix   -e LIBGL_ALWAYS_SOFTWARE=1 -v ~/.gazebo:/root/.gazebo   --name fastbot-waypoint-tests   fastbot-waypoint-tests
+                    docker run --rm -e DISPLAY=${DISPLAY}   -v /tmp/.X11-unix:/tmp/.X11-unix   -e LIBGL_ALWAYS_SOFTWARE=1 -v ~/.gazebo:/root/.gazebo   --name fastbot-waypoint-tests   fastbot-waypoint-tests
                 '''
             }
         }
