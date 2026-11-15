@@ -2,10 +2,10 @@ To start jenkins, run
 
     bash ~/webpage_ws/start_jenkins.sh
 
-Follow the directions outputted in the terminal to go to the Jenkins server webpage. 
+Follow the directions outputted in the terminal to go to the Jenkins server webpage (i.e., see /home/user/jenkins__pid__url.txt for PID and url).
 Log in with
 username: admin
-password: \[\[what you find in ~/webpage_ws/jenkins/secrets/initialAdminPassword\]\]
+password: \<what you find in ~/webpage_ws/jenkins/secrets/initialAdminPassword\>
 
 From there, you should see the "Fastbot Waypoint Action Test" as one of the jobs that appears on the dashboard. 
 Click on it. 
